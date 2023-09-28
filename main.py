@@ -1,2 +1,1 @@
 # Certificate Generator
-k k
