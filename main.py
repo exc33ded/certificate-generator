@@ -8,8 +8,8 @@ def cleanup_data():
             list_of_names.append(line.strip())
 
 def calculate_font_size(template, name, max_width, max_height):
-    font = cv2.FONT_HERSHEY_TRIPLEX 
-    font_scale = 2.0 
+    font = cv2.FONT_HERSHEY_SCRIPT_COMPLEX 
+    font_scale = 3.0 
     
     while True:
         text_size, _ = cv2.getTextSize(name, font, font_scale, 1)
@@ -31,12 +31,12 @@ def generate_certificates():
         font_scale = calculate_font_size(template, name, max_text_width, max_text_height)
         
         font_thickness = 2
-        text_size, _ = cv2.getTextSize(name, cv2.FONT_HERSHEY_TRIPLEX, font_scale, font_thickness)
+        text_size, _ = cv2.getTextSize(name, cv2.FONT_HERSHEY_SCRIPT_COMPLEX, font_scale, font_thickness)
         text_x = (template.shape[1] - text_size[0]) // 2
         text_y = (template.shape[0] - text_size[1]) // 2 + 50  
         
         font_color = (80, 80, 80) 
-        cv2.putText(template, name, (text_x, text_y), cv2.FONT_HERSHEY_TRIPLEX, font_scale, font_color, font_thickness, cv2.LINE_AA)
+        cv2.putText(template, name, (text_x, text_y), cv2.FONT_HERSHEY_SCRIPT_COMPLEX, font_scale, font_color, font_thickness, cv2.LINE_AA)
 
         cv2.imwrite(f'generated-certificate-data/{name}.jpg', template)
 
