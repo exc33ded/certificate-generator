@@ -12,7 +12,6 @@ def cleanup_data():
 def generate_certificates():
     for name in list_of_names:
         template = cv2.imread("certificate_template.png")
-        template = cv2.cvtColor(template, cv2.COLOR_BGR2RGB)  # Convert to RGB color space
 
         max_text_width = template.shape[1] - 200
         max_text_height = template.shape[0] - 200
@@ -35,7 +34,7 @@ def generate_certificates():
         text_x = (template.shape[1] - text_width) // 2
         text_y = (template.shape[0] - text_height) // 2 - 30
 
-        font_color = (100, 100, 100)  # Light black color in RGB format
+        font_color = (105,105,105)  # Original color of the template in RGB format
         img_pil = Image.fromarray(template)
         draw = ImageDraw.Draw(img_pil)
         draw.text((text_x, text_y), name, font=font, fill=font_color)
@@ -45,4 +44,3 @@ def generate_certificates():
 
 cleanup_data()
 generate_certificates()
-
